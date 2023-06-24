@@ -1,9 +1,9 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "folder=E:\project\MLDaunJambu\testing\daunjambuair"  REM Replace with the path to your folder
+set "folder=../dataset"  REM Replace with the path to your folder
 set "extension=.jpg"  REM Replace with the file extension of your files
-set "prefix=daunjambuair"
+set "prefix=daunjambubiji"
 
 cd "%folder%"
 

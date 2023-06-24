@@ -6,13 +6,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.cluster import KMeans
 from sklearn.metrics import classification_report, confusion_matrix
-from skimage.feature import greycomatrix, greycoprops
+from skimage.feature import graycomatrix, graycoprops
 from skimage.measure import label, regionprops, regionprops_table
 from collections import Counter
 from sklearn.metrics import accuracy_score
 
-file = 'features.xlsx'
-file_name = 'testing/IMG-20230517-WA0037.jpg'
+file = 'features-fix3.xlsx'
+file_name = 'testing/daunjambuair1.jpg'
 dataset = pd.read_excel(file)
 glcm_properties = ['dissimilarity', 'correlation', 'homogeneity', 'contrast', 'ASM', 'energy']
 
@@ -22,7 +22,7 @@ tes_fitur = []
 tes_fitur.append([])
 tes_kelas = []
 tes_kelas.append([])
-tes_kelas[0].append('daunjambubiji')
+tes_kelas[0].append('daunjambuair')
 print(len(fitur))
 
 # Feature extraction for data testing----------------------------------------------
@@ -57,7 +57,7 @@ tes_fitur[0].append(dom_color[1])
 tes_fitur[0].append(dom_color[2])
 
 # GLCM
-glcm = greycomatrix(gray,
+glcm = graycomatrix(gray,
                     distances=[5],
                     angles=[0, np.pi/4, np.pi/2, 3*np.pi/4],
                     levels=256,
@@ -65,7 +65,7 @@ glcm = greycomatrix(gray,
                     normed=True)
 feature = []
 glcm_props = [
-    propery for name in glcm_properties for propery in greycoprops(glcm, name)[0]]
+    propery for name in glcm_properties for propery in graycoprops(glcm, name)[0]]
 for item in glcm_props:
     tes_fitur[0].append(item)
 
